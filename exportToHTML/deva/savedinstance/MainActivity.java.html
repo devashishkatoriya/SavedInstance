@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,128,0); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MainActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">deva.savedinstance; 
+ 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+</span><span class="s0">import </span><span class="s1">android.util.Log; 
+</span><span class="s0">import </span><span class="s1">android.view.View; 
+</span><span class="s0">import </span><span class="s1">android.widget.Button; 
+</span><span class="s0">import </span><span class="s1">android.widget.EditText; 
+</span><span class="s0">import </span><span class="s1">android.widget.TextView; 
+ 
+</span><span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity { 
+ 
+    </span><span class="s0">private </span><span class="s1">TextView i_value; 
+    </span><span class="s0">private </span><span class="s1">EditText editText; 
+    </span><span class="s0">private int </span><span class="s1">i; 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        Log.d(</span><span class="s2">&quot;debug&quot;</span><span class="s1">,</span><span class="s2">&quot;At onCreate()&quot;</span><span class="s1">); 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_main); 
+        Button btn = (Button) findViewById(R.id.button); 
+        i_value = (TextView) findViewById(R.id.textView2); 
+        editText = (EditText) findViewById(R.id.editText); 
+ 
+        btn.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View view) { 
+                Log.d(</span><span class="s2">&quot;debug&quot;</span><span class="s1">,</span><span class="s2">&quot;At onClickListener()&quot;</span><span class="s1">); 
+                i = Integer.parseInt(editText.getText().toString()); 
+                i_value.setText(i); 
+            } 
+        }); 
+        Log.d(</span><span class="s2">&quot;debug&quot;</span><span class="s1">,</span><span class="s2">&quot;onCreate() Completed&quot;</span><span class="s1">); 
+    } 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onRestoreInstanceState(Bundle savedInstanceState) { 
+        Log.d(</span><span class="s2">&quot;debug&quot;</span><span class="s1">,</span><span class="s2">&quot;At onRestoreInstanceState()&quot;</span><span class="s1">); 
+        </span><span class="s0">super</span><span class="s1">.onRestoreInstanceState(savedInstanceState); 
+        i=savedInstanceState.getInt(</span><span class="s2">&quot;value_of_i&quot;</span><span class="s1">); 
+        i_value.setText(i); 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">onSaveInstanceState(Bundle savedInstanceState) { 
+        Log.d(</span><span class="s2">&quot;debug&quot;</span><span class="s1">,</span><span class="s2">&quot;At onSaveInstanceState()&quot;</span><span class="s1">); 
+        </span><span class="s0">super</span><span class="s1">.onSaveInstanceState(savedInstanceState); 
+        savedInstanceState.putInt(</span><span class="s2">&quot;value_of_i&quot;</span><span class="s1">,Integer.parseInt(editText.getText().toString())); 
+    } 
+} 
+</span></pre>
+</body>
+</html>
